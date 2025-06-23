@@ -1,12 +1,17 @@
 from gpiozero import AngularServo
-from gpiozero.pins.pigpio import PiGPIOFactory
-import os
-import time
+from bluedot import BlueDot
+from signal import pause
 
-factory = PiGPIOFactory(host=os.environ["PIGPIO_ADDR"])
+dot = BlueDot()
 servo = AngularServo(12)
 
+def turn(pos):
+    if pos.right:
+        servo.angle = 90
+    elif pos.left:
+        servo.angle = -90
 
-servo.max_angle = 90
-time.sleep(3)
-servo.min_angle = -90
+#dot.when_pressed = turn
+dot.when_moved = turn
+dot.when_released = servo.angle = 0
+pause()
