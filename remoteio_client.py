@@ -4,6 +4,8 @@ import os
 
 if __name__ == "__main__":
     #server_ip = os.environ["REMOTEIO_ADDR"]
+
+    # moving into a ssh-server implementation within a ROS2 network, so this file is redundant
     server_ip = ""
     server_port = 8509
 
